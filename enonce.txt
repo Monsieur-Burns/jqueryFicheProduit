@@ -1,0 +1,123 @@
+/*
+******************************************************************************************************************************************************
+*
+* Ennoncé du formulaire:  Formulaire de Création de Produit Numérique
+* Chapitre: Vérifications par Regex
+*******************************************************************************************************************************************************
+*
+*
+* Formulaire de Création de Produit Numérique
+*
+*
+
+***************************************************** Toutes les vérifications pourront se faire à la saisie du texte
+et la bordure sera rouge quand le champs est invalide et vert quand le champs ************************************************************************
+*****************************************************************************************************************************************************************
+*
+*
+  *
+  * Vérification par Regex. : Min. 4 caractères et que des caractères alpha avec espace et tiret compris
+  *
+  * Champs texte "Accroche du Produit"
+  * Vérification par Regex. : Min. 8 caractères et que des caractères alpha-numérique avec espace compris
+  *
+  * Champs texte" Couleur de produit":  #AA66EE: vérification de la saisie d'une couleur hexadecimal
+  *
+  * Champ texte "Quantité du produit":  La quantité sera vérifié et devra etre comprise entre 1 et 1000 unités
+  *
+  * Livraison Offerte ? Oui ou Non : Boutons Radios.
+  * Si le bouton Non est coché, faire apparaitre un champs texte "Prix de la Livraison(€)" (voir les fonctions hide() ou show())
+  *
+  *
+  * Payable en 3 fois : Checkbox (facultative)
+  *
+  * Retrait OFFERT en magasin: CheckBox (facultative)
+  *
+  * Un champs texte "Référence du produit"
+  * Format: AA-XXXX-BB avec vérification du format (A et B sont des lettres et X des chiffres)
+  *
+  * Champs texte Prix HT(€) avec vérfification du format du prix au format 00.00€
+  *
+  * Champs zone de saisie "Résumé du produit" avec minimum 10 caractères, que des caracatères alpha avec tiret, point,parenthèses,apostrophe, point-virgule et  espace compris
+  *
+  *
+  * Boutons radios pour la Capacité Mémoire en Go.: 5Go, 10 Go, 20Go, 50Go, 100Go, 1To, Autre
+  * Quand je selectionne "Autre", un champs texte apparait pou saisir manuellement la capacité
+  *
+  * Un champs texte "Date de sortie du produit":  à valider et vérifier au format française "JJ/MM/XXXX"
+  * Bonus: Vérifier que la date de sortie soit ultérieur à aujourd'hui au niveau de l'année
+  *
+  * Liste déroulante pour le choix du Transporteur du produit:  UPS, DHL, SoCollissimo,TNT, GLS, FretBay, LaPoste, Point Relay, Autre
+  * Une des options est obligatoire: nous sommes obligés de selectionner 1 transporteur
+  * Bonus: Quand je selectionne "Autre", un champs apparait en dessous permettant la saisie manuelle d'un transporteur (voir les fonction hide() et show())
+  *
+  *
+  * Boutons radios "Délai d'Expédition du produit": Expédié sous 24h, Expédié sous 48h.,Expédié sous 5J.,Expédié sous 1 semaine. Autre
+  * Bonus: Quand je selectionne "Autre", un champs apparait en dessous permettant la saisie manuelle le délai d'expédition (voir les fonction hide() et show())
+  *
+  *
+  * Un champs texte Poids Net de format XXX.X Kg.
+  * Case a cocher en dessous "Prendre en compte le poids du colis": Si je coche cette case, la valeur du Poids Net augmente de 5%.
+  *
+  *
+  * Boutons radios: Disponible en stocke, Disponible hors-stock, Affichage simple des détails du produit hors-stock
+  *
+  *
+  * Champs texte "Garantie du Produit":  Nb d'année avec la vérification du nombre de 0 à 5 ans
+  * Zone de saisie de la Ganrantie: Elle doit faire au minimum 15 caractères si le nb d'année est strictement supérieur à 0
+  *
+  *
+  * Champs texte "Taxe du Produit": Au Format "00.00%"
+  * Bonus: Quand je quitte le champs Taxe, cela me calcule le prix TTC a partir du Prix HT et de la Taxe (La fonction val() peut aussi modifier une valeur d'un input...)
+  *
+  *
+  * Champs texte Prix TTC avec TVA inclue au format XX.XX€
+  * Bonus: Quand je quitte la saisie de ce champs, le symbole € est mis à la fin du prix
+  *
+  *
+  * Zone de saisie "Fonctionnalités du Produit (Fiche Techniques)": : Minimum 20 caractères avec prise en comptes des balises HTML <p> <h1><h3> ...
+  *
+  *
+  * Champ texte  "Url d'image du produit": à valider du format  d'URL distante  "http://www.....jpg" avec validation de l'extension .jpg ou .jpeg ou .png
+  * Bonus: Quand je quitte le champs, une prévisualisation de l'image produit est affiché en dessous
+  *
+  * Champ texte  "Url de vidéo de démonstration": Validation d'une iframe <iframe> en provenance des plateformes  avec URL distante sur Youtube, Dailymotion ou Vimeo
+  * Bonus: Quand je quitte le champs, une prévisualisation de l'iframe produit est affiché en dessous
+  *
+  *
+  * Liste de case à cocher sur la "Distribution du produit": Carrefour, Auchan, Leclerc, Boulanger, Fnac, Amazon, Vente Privée, CDiscount, Le Bon Coin.
+  *
+  *
+  * Information de la Société:
+  *
+  * Nom: champs texte (min 3 caractères alpha-numérique avec point compris)
+  * Email: Champs texte à valider au niveau du format
+  * Telephone : Champos texte à valider  au niveau du format
+  * Num. SIREN de l'entreprise à valider avec une regex
+  * Coordonnées bancaire du responsable de la Société:
+  *
+  * Numéro 16 chiffres avec XXXX-XXXX-XXXX-XXXX
+  * Cryptogramme Visuel: XXX
+  * Date d'expiration MM/AA
+  *
+  *
+  * Champ texte du "Manuel d'Utilisation": a valider au format d'une URL à extension .html, .doc, .docx ou format.pdf
+  *
+  *
+  * Checbox Obligatoire: J'accèpte les Conditions Générales de Ventes CGV
+  *
+  * Checbox Obligatoire: j'accèpte les Conditions Générales d'Utilisation CGU du site
+  *
+  *
+  * Boutton de type button "Créer le produit"
+  * Quand je clique dessus, je dois vérifier la valifité du Nom, de la référéncene, du Prix et du résumé ainsi que les 2 checkbox CGU et CGV soit
+  * bien cochées
+  *
+  *
+  ****************************************************************************************************************************************************************
+  *
+  *
+  * Bonus: Un boutton "Prévisualiser le produit" ou quand je clique, j'ai le Récapitulatif Intégral des Informations saisi ci-dessus
+  * Bonus 2: Pour toutes les vérifications sur chaque champs,
+  * Si elles sont fausses, en plus d'avoir une bordure rouge du le champs, ajouter un text d'erreur en dessous du champs pour etre plus explicite sur l'erreur
+  */
